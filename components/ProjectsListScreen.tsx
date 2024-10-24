@@ -10,9 +10,10 @@ const projects = [
 export default function ProjectsListScreen({ navigation }) {
   const renderItem = ({ item }) => (
     <TouchableOpacity 
-      style={styles.projectItem} 
-      onPress={() => navigation.navigate('ProjectHome', { projectId: item.id })} // Ensure this name matches
-    >
+  style={styles.projectItem} 
+  onPress={() => navigation.navigate('Project Overview', { projectId: item.id })} // Ensure this matches
+>
+
       <Text style={styles.projectTitle}>{item.title}</Text>
       <View style={styles.participantsBadge}>
         <Text style={styles.participantsText}>Participants: {item.participants}</Text>

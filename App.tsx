@@ -4,6 +4,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import ProfileScreen from './components/ProfileScreen';
 import ProjectsListScreen from './components/ProjectsListScreen';
+import ProjectOverviewScreen from './components/ProjectOverviewScreen';
 
 function HomeScreen({ navigation }) { 
   return (
@@ -36,6 +37,7 @@ export default function App() {
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Your Profile" component={ProfileScreen} />
         <Drawer.Screen name="Projects" component={ProjectsListScreen} />
+        <Drawer.Screen name="Project Overview" component={ProjectOverviewScreen} />
         <Drawer.Screen name="About" component={AboutPage} />
       </Drawer.Navigator>
     </NavigationContainer>
