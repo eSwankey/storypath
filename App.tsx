@@ -2,40 +2,27 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import ProfileScreen from './components/ProfileScreen';
+import ProjectsListScreen from './components/ProjectsListScreen';
 
-// Screens for the Drawer Navigation
-function HomeScreen({ navigation }) {
+function HomeScreen({ navigation }) { 
   return (
     <View style={styles.container}>
       <Text>Welcome to StoryPath!</Text>
       <View style={styles.buttonContainer}>
-        <Button 
-          title="Create Profile!" 
-          onPress={() => navigation.navigate('Create Profile')} 
-        />
+        <Button title="Your Profile!" onPress={() => navigation.navigate('Your Profile')} />
       </View>
       <View style={styles.buttonContainer}>
-        <Button 
-          title="Explore Projects!" 
-          onPress={() => navigation.navigate('Explore Projects')} 
-        />
+        <Button title="Explore Projects!" onPress={() => navigation.navigate('Projects')} />
       </View>
     </View>
   );
 }
 
-function CreateProfileScreen() {
+function AboutPage() {
   return (
     <View style={styles.container}>
-      <Text>Create your profile here!</Text>
-    </View>
-  );
-}
-
-function ExploreProjectsScreen() {
-  return (
-    <View style={styles.container}>
-      <Text>Explore the projects here!</Text>
+      <Text>Some info about StoryPath!</Text>
     </View>
   );
 }
@@ -47,8 +34,9 @@ export default function App() {
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Create Profile" component={CreateProfileScreen} />
-        <Drawer.Screen name="Explore Projects" component={ExploreProjectsScreen} />
+        <Drawer.Screen name="Your Profile" component={ProfileScreen} />
+        <Drawer.Screen name="Projects" component={ProjectsListScreen} />
+        <Drawer.Screen name="About" component={AboutPage} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
@@ -63,6 +51,6 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     marginVertical: 10,
-    width: '80%', // Make buttons stretch across 80% of the screen
+    width: '80%',
   },
 });
