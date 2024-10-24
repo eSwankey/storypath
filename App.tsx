@@ -1,12 +1,12 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native'; // component for navigation
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native'; // build in reach native components
 import ProfileScreen from './components/ProfileScreen';
 import ProjectsListScreen from './components/ProjectsListScreen';
 import ProjectOverviewScreen from './components/ProjectOverviewScreen';
 
-function HomeScreen({ navigation }) { 
+function HomeScreen({ navigation }) {  // homescreen component
   return (
     <View style={styles.container}>
       <Text>Welcome to StoryPath!</Text>

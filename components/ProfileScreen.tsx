@@ -6,7 +6,7 @@ export default function ProfileScreen() {
   const [username, setUsername] = useState('');
   const [photo, setPhoto] = useState(null);
 
-  const pickImage = async () => {
+  const pickImage = async () => { //async for await
     const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
     
     if (permissionResult.granted === false) {
@@ -15,24 +15,24 @@ export default function ProfileScreen() {
     }
 
     const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      mediaTypes: ImagePicker.MediaTypeOptions.Images, //images only
       allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
+      aspect: [3, 3], //
+      quality: 1, // 0 to 1
     });
 
     if (!result.canceled && result.assets && result.assets.length > 0) {
-      setPhoto(result.assets[0].uri);
+      setPhoto(result.assets[0].uri); //saves frrom array
     }
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Your Profile</Text>
-      
-      <TouchableOpacity onPress={pickImage} style={styles.imageContainer}>
-        {photo ? (
-          <Image source={{ uri: photo }} style={styles.profileImage} />
+    
+      <TouchableOpacity onPress={pickImage} style={styles.imageContainer}> 
+        {photo ? (    
+          <Image source={{ uri: photo }} style={styles.profileImage} /> /* conditional, if set to true */
         ) : (
           <View style={styles.placeholderImage}>
             <Text style={styles.addPhotoText}>Tap to add photo</Text>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 
-// Dummy data for projects
+// dummy data for projects
 const projects = [
   { id: '1', title: 'UQ Campus Tour', participants: 51 },
   { id: '2', title: 'UQ Campus Squid Game', participants: 2 },
@@ -11,7 +11,7 @@ export default function ProjectsListScreen({ navigation }) {
   const renderItem = ({ item }) => (
     <TouchableOpacity 
   style={styles.projectItem} 
-  onPress={() => navigation.navigate('Project Overview', { projectId: item.id })} // Ensure this matches
+  onPress={() => navigation.navigate('Project Overview', { projectId: item.id })} // must ensure this matches
 >
 
       <Text style={styles.projectTitle}>{item.title}</Text>
