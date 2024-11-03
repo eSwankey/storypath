@@ -7,13 +7,12 @@ const projects = [
   { id: '2', title: 'UQ Campus Squid Game', participants: 2 },
 ];
 
-export default function ProjectsListScreen({ navigation }) {
-  const renderItem = ({ item }) => (
+export default function ProjectsListScreen({ navigation }) { //default export oif module
+  const renderItem = ({ item }) => ( //renders each item in list
     <TouchableOpacity 
-  style={styles.projectItem} 
-  onPress={() => navigation.navigate('Project Overview', { projectId: item.id })} // must ensure this matches
->
-
+        style={styles.projectItem} 
+        onPress={() => navigation.navigate('Project Overview', { projectId: item.id })} // goes to unique id
+    >
       <Text style={styles.projectTitle}>{item.title}</Text>
       <View style={styles.participantsBadge}>
         <Text style={styles.participantsText}>Participants: {item.participants}</Text>
@@ -27,7 +26,7 @@ export default function ProjectsListScreen({ navigation }) {
       <FlatList
         data={projects}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id} // prop that assigns unique id to each item
         contentContainerStyle={styles.listContent}
       />
     </View>

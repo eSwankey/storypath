@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 export default function ProjectOverviewScreen({ route }) {
-  const { projectId } = route.params; // Accessing projectId from params
+  const { projectId } = route.params; // accessing projectId from params
 
   let projectContent;
 

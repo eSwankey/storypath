@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useRoute } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';  // not implemented yet!
+import { useRoute } from '@react-navigation/native'; // hook for accessing params etc
 
-// Dummy data for projects
+// Dummy data!!!
 const projectsData = {
   '1': {
     title: 'UQ Campus Tour',
@@ -17,7 +17,7 @@ const projectsData = {
   '2': {
     title: 'UQ Campus Squid Game',
     instructions: 'Navigate through the challenges and avoid elimination!',
-    initial_clue: 'The first game is Red Light, Green Light.',
+    initial_clue: 'The first game is Red Light, Green Light!',
     points: 0,
     total_points: 20,
     locations_visited: 0,
@@ -27,8 +27,8 @@ const projectsData = {
 
 function ProjectHome() {
   const route = useRoute();
-  const { projectId } = route.params; // Get the projectId from the navigation params
-  const project = projectsData[projectId]; // Fetch the corresponding project data
+  const { projectId } = route.params; // get the projectid from the navigation params
+  const project = projectsData[projectId];
 
   return (
     <View style={styles.container}>
