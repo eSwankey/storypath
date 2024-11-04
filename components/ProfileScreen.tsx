@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import { saveProfileData } from '../api.js'; // link to the api which stores username and the profile picture
 
 export default function ProfileScreen() {
   const [username, setUsername] = useState('');
   const [photo, setPhoto] = useState(null);
 
-  const pickImage = async () => { //async for await
+  const pickImage = async () => {
     const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
     
     if (permissionResult.granted === false) {
@@ -15,14 +16,29 @@ export default function ProfileScreen() {
     }
 
     const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images, //images only
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
-      aspect: [3, 3], //
-      quality: 1, // 0 to 1
+      aspect: [3, 3],
+      quality: 1,
     });
 
     if (!result.canceled && result.assets && result.assets.length > 0) {
-      setPhoto(result.assets[0].uri); //saves frrom array
+      setPhoto(result.assets[0].uri);
+    }
+  };
+
+  const handleSaveProfile = async () => {
+    const profileData = {
+      username,
+      photo
+    };
+
+    try {
+      await saveProfileData(profileData); // API call
+      alert('Profile saved successfully!');
+    } catch (error) {
+      console.error('Error saving profile:', error);
+      alert('Error saving profile: ' + error.message);
     }
   };
 
@@ -30,9 +46,9 @@ export default function ProfileScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Your Profile</Text>
     
-      <TouchableOpacity onPress={pickImage} style={styles.imageContainer}> 
-        {photo ? (    
-          <Image source={{ uri: photo }} style={styles.profileImage} /> /* conditional, if set to true */
+      <TouchableOpacity onPress={pickImage} style={styles.imageContainer}>
+        {photo ? (
+          <Image source={{ uri: photo }} style={styles.profileImage} />
         ) : (
           <View style={styles.placeholderImage}>
             <Text style={styles.addPhotoText}>Tap to add photo</Text>
@@ -47,7 +63,7 @@ export default function ProfileScreen() {
         onChangeText={setUsername}
       />
 
-      <Button title="Save Profile" onPress={() => alert('Profile Saved!')} />
+      <Button title="Save Profile" onPress={handleSaveProfile} />
     </View>
   );
 }

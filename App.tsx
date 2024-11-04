@@ -1,7 +1,7 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native'; // component for navigation
+import { NavigationContainer } from '@react-navigation/native'; //  navigation
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { StyleSheet, Text, View, Button } from 'react-native'; // build in reach native components
+import { StyleSheet, Text, View, Button } from 'react-native'; //importing some default styles
 import ProfileScreen from './components/ProfileScreen';
 import ProjectsListScreen from './components/ProjectsListScreen';
 import ProjectOverviewScreen from './components/ProjectOverviewScreen';
