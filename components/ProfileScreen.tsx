@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import { saveProfileData } from '../api.js'; // link to the api which stores username and the profile picture
 
-export default function ProfileScreen() {
+export default function ProfileScreen({ handleProfileUpdate }) {
   const [username, setUsername] = useState('');
   const [photo, setPhoto] = useState(null);
 
   const pickImage = async () => {
     const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    
+
     if (permissionResult.granted === false) {
       alert('Permission to access the camera roll is required!');
       return;
@@ -27,25 +26,15 @@ export default function ProfileScreen() {
     }
   };
 
-  const handleSaveProfile = async () => {
-    const profileData = {
-      username,
-      photo
-    };
-
-    try {
-      await saveProfileData(profileData); // API call
-      alert('Profile saved successfully!');
-    } catch (error) {
-      console.error('Error saving profile:', error);
-      alert('Error saving profile: ' + error.message);
-    }
+  const handleSaveProfile = () => {
+    handleProfileUpdate(username, photo); // call the passed function to update the profile
+    alert('Profile saved!');
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Your Profile</Text>
-    
+
       <TouchableOpacity onPress={pickImage} style={styles.imageContainer}>
         {photo ? (
           <Image source={{ uri: photo }} style={styles.profileImage} />
@@ -55,7 +44,7 @@ export default function ProfileScreen() {
           </View>
         )}
       </TouchableOpacity>
-      
+
       <TextInput
         style={styles.input}
         placeholder="Enter your name here!"

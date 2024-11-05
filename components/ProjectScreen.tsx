@@ -1,11 +1,11 @@
-// In ProjectOverviewScreen.tsx
+// used in ProjectOverviewScreen.tsx
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 export default function ProjectOverviewScreen({ route }) {
-  const { projectId } = route.params; // Get project ID from navigation parameters
+  const { projectId } = route.params; // Get ID from nav params
 
-  // Use projectId to determine which project to display (e.g., fetch data or use static data)
+  // sse projectId to determine which project to display e.g fetch data/ use static data
   
   return (
     <View style={styles.container}>
@@ -15,4 +15,4 @@ export default function ProjectOverviewScreen({ route }) {
   );
 }
 
-// Styles here...
+// Styles not implemented

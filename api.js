@@ -1,3 +1,4 @@
+// unfortunately I have not been able to implement the API calling so the following code is dunder
 import fetch from 'node-fetch';
 
 const API_BASE_URL = 'https://0b5ff8b0.uqcloud.net/api';

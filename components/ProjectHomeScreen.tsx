@@ -1,3 +1,5 @@
+// This whole page is not actually included in the react routing as it is a work in progress. However the plan was to use this as the actual project details pages for each individual project, which then gives the user options to use the map and QR code scanning.
+
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';  // not implemented yet!

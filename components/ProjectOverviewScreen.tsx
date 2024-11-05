@@ -5,7 +5,7 @@ export default function ProjectOverviewScreen({ route }) {
   const { projectId } = route.params; // accessing projectId from params
 
   let projectContent;
-
+  // hard coded for now, but would ideally be retrieved from API call
   if (projectId === '1') {
     projectContent = (
       <View style={styles.card}>
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f0f8ff',
     borderRadius: 10,
     padding: 20,
-    width: '100%', // Full width of the parent container
+    width: '100%',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
